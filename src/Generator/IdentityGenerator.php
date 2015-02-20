@@ -18,8 +18,6 @@ use Star\Component\Identity\Identity;
  */
 interface IdentityGenerator
 {
-    const INTERFACE_NAME = __CLASS__;
-
     /**
      * @return Identity
      */
