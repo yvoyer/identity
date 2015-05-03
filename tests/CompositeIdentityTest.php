@@ -50,4 +50,14 @@ final class CompositeIdentityTest extends \PHPUnit_Framework_TestCase
 
         return $mock;
     }
+
+    public function test_it_should_be_converted_to_string()
+    {
+        $id1 = $this->getMockIdentity(1);
+        $id2 = $this->getMockIdentity(2);
+        $id3 = $this->getMockIdentity(3);
+
+        $identity = new CompositeIdentity(array($id1, $id2, $id3));
+        $this->assertSame('1 2 3', (string) $identity);
+    }
 }

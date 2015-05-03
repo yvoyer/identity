@@ -27,13 +27,13 @@ final class StringIdentityTest extends \PHPUnit_Framework_TestCase
     public function test_should_support_null()
     {
         $identity = new StringIdentity(null);
-        $this->assertSame('', $identity->id());
+        $this->assertSame(null, $identity->id());
     }
 
     public function test_should_have_default_value_as_null()
     {
         $identity = new StringIdentity();
-        $this->assertSame('', $identity->id());
+        $this->assertSame(null, $identity->id());
     }
 
     /**
@@ -58,5 +58,11 @@ final class StringIdentityTest extends \PHPUnit_Framework_TestCase
             array((object) array()),
             array(123.321),
         );
+    }
+
+    public function test_it_should_be_converted_to_string()
+    {
+        $this->assertSame('id', (string) new StringIdentity('id'));
+        $this->assertSame('', (string) new StringIdentity(null));
     }
 }

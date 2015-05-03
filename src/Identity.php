@@ -20,4 +20,9 @@ interface Identity
      * @return string
      */
     public function id();
+
+    /**
+     * @return string
+     */
+    public function __toString();
 }

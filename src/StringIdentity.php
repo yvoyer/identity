@@ -42,6 +42,14 @@ class StringIdentity implements Identity
      */
     public function id()
     {
-        return strval($this->id);
+        return $this->id;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return strval($this->id());
     }
 }

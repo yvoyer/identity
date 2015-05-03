@@ -58,4 +58,10 @@ final class IntegerIdTest extends \PHPUnit_Framework_TestCase
             array(123.321),
         );
     }
+
+    public function test_it_should_be_converted_to_string()
+    {
+        $this->assertSame('123', (string) new IntegerId(123));
+        $this->assertSame('', (string) new IntegerId(null));
+    }
 }

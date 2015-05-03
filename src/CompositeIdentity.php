@@ -54,4 +54,12 @@ class CompositeIdentity implements Identity
     {
         return strval(implode(' ', $this->ids));
     }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->id();
+    }
 }
