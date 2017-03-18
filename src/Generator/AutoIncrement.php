@@ -11,8 +11,6 @@ use Star\Component\Identity\Identity;
 use Star\Component\Identity\IntegerId;
 
 /**
- * Class AutoIncrement
- *
  * @author  Yannick Voyer (http://github.com/yvoyer)
  *
  * @package Star\Component\Identity\Generator

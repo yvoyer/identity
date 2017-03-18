@@ -10,8 +10,6 @@ namespace Star\Component\Identity\Generator;
 use Star\Component\Identity\Helper\DomainIdentityAssert;
 
 /**
- * Class AutoIncrementIdTest
- *
  * @author  Yannick Voyer (http://github.com/yvoyer)
  *
  * @package Star\Component\Identity\Generator
@@ -33,6 +31,6 @@ final class AutoIncrementIdTest extends \PHPUnit_Framework_TestCase
     public function test_should_return_the_id_as_null()
     {
         $this->assertInstanceOfDomainIdentity($this->generator->nextIdentity());
-        $this->assertNull($this->generator->nextIdentity()->id());
+        $this->assertSame('', $this->generator->nextIdentity()->toString());
     }
 }

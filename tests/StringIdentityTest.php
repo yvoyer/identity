@@ -8,8 +8,6 @@
 namespace Star\Component\Identity;
 
 /**
- * Class StringIdentityTest
- *
  * @author  Yannick Voyer (http://github.com/yvoyer)
  *
  * @package Star\Component\Identity
@@ -21,19 +19,19 @@ final class StringIdentityTest extends \PHPUnit_Framework_TestCase
     public function test_should_support_string()
     {
         $identity = new StringIdentity('id');
-        $this->assertSame('id', $identity->id());
+        $this->assertSame('id', $identity->toString());
     }
 
     public function test_should_support_null()
     {
         $identity = new StringIdentity(null);
-        $this->assertSame(null, $identity->id());
+        $this->assertSame('', $identity->toString());
     }
 
     public function test_should_have_default_value_as_null()
     {
         $identity = new StringIdentity();
-        $this->assertSame(null, $identity->id());
+        $this->assertSame('', $identity->toString());
     }
 
     /**
@@ -62,7 +60,7 @@ final class StringIdentityTest extends \PHPUnit_Framework_TestCase
 
     public function test_it_should_be_converted_to_string()
     {
-        $this->assertSame('id', (string) new StringIdentity('id'));
-        $this->assertSame('', (string) new StringIdentity(null));
+        $this->assertSame('id', (new StringIdentity('id'))->toString());
+        $this->assertSame('', (new StringIdentity(null))->toString());
     }
 }

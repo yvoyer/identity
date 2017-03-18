@@ -10,8 +10,6 @@ namespace Star\Component\Identity;
 use Star\Component\Identity\Exception\InvalidArgumentException;
 
 /**
- * Class CompositeIdentity
- *
  * @author  Yannick Voyer (http://github.com/yvoyer)
  *
  * @package Star\Component\Identity
@@ -44,22 +42,22 @@ class CompositeIdentity implements Identity
      */
     protected function addIdentity(Identity $identity)
     {
-        $this->ids[] = $identity->id();
+        $this->ids[] = $identity->toString();
     }
 
     /**
      * @return string
      */
-    public function id()
+    public function entityClass()
     {
-        return strval(implode(' ', $this->ids));
+	    return 'object';
     }
 
     /**
      * @return string
      */
-    public function __toString()
+    public function toString()
     {
-        return $this->id();
+	    return strval(implode(' ', $this->ids));
     }
 }

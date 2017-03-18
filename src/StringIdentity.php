@@ -10,8 +10,6 @@ namespace Star\Component\Identity;
 use Star\Component\Identity\Exception\InvalidArgumentException;
 
 /**
- * Class StringIdentity
- *
  * @author  Yannick Voyer (http://github.com/yvoyer)
  *
  * @package Star\Component\Identity
@@ -40,16 +38,16 @@ class StringIdentity implements Identity
     /**
      * @return string
      */
-    public function id()
+    public function entityClass()
     {
-        return $this->id;
+        return 'object';
     }
 
     /**
      * @return string
      */
-    public function __toString()
+    public function toString()
     {
-        return strval($this->id());
+        return strval($this->id);
     }
 }
