@@ -8,8 +8,6 @@
 namespace Star\Component\Identity;
 
 /**
- * Class Identity
- *
  * @author  Yannick Voyer (http://github.com/yvoyer)
  *
  * @package Star\Component\Identity
@@ -17,12 +15,16 @@ namespace Star\Component\Identity;
 interface Identity
 {
     /**
+     * Returns the entity class for the identity.
+     *
      * @return string
      */
-    public function id();
+    public function entityClass();
 
     /**
+     * Returns the string value of the identity.
+     *
      * @return string
      */
-    public function __toString();
+    public function toString();
 }

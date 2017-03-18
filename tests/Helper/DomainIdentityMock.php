@@ -8,8 +8,6 @@
 namespace Star\Component\Identity\Helper;
 
 /**
- * Class DomainIdentityMock
- *
  * @author  Yannick Voyer (http://github.com/yvoyer)
  *
  * @package Star\Component\Identity\Helper

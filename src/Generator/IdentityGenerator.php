@@ -10,8 +10,6 @@ namespace Star\Component\Identity\Generator;
 use Star\Component\Identity\Identity;
 
 /**
- * Class IdentityGenerator
- *
  * @author  Yannick Voyer (http://github.com/yvoyer)
  *
  * @package Star\Component\Identity\Generator

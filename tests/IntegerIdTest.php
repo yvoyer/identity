@@ -8,8 +8,6 @@
 namespace Star\Component\Identity;
 
 /**
- * Class IntegerIdTest
- *
  * @author  Yannick Voyer (http://github.com/yvoyer)
  *
  * @package Star\Component\Identity
@@ -19,19 +17,19 @@ final class IntegerIdTest extends \PHPUnit_Framework_TestCase
     public function test_should_return_integer_value()
     {
         $id = new IntegerId(12);
-        $this->assertSame(12, $id->id());
+        $this->assertSame('12', $id->toString());
     }
 
     public function test_should_support_null_as_default_value()
     {
         $id = new IntegerId();
-        $this->assertSame(null, $id->id());
+        $this->assertSame('', $id->toString());
     }
 
     public function test_should_support_null()
     {
         $id = new IntegerId(null);
-        $this->assertSame(null, $id->id());
+        $this->assertSame('', $id->toString());
     }
 
     /**
@@ -61,7 +59,7 @@ final class IntegerIdTest extends \PHPUnit_Framework_TestCase
 
     public function test_it_should_be_converted_to_string()
     {
-        $this->assertSame('123', (string) new IntegerId(123));
-        $this->assertSame('', (string) new IntegerId(null));
+        $this->assertSame('123', (new IntegerId(123))->toString());
+        $this->assertSame('', (new IntegerId(null))->toString());
     }
 }

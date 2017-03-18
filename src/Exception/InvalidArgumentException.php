@@ -8,8 +8,6 @@
 namespace Star\Component\Identity\Exception;
 
 /**
- * Class InvalidArgumentException
- *
  * @author  Yannick Voyer (http://github.com/yvoyer)
  *
  * @package Star\Component\Identity\Exception
