@@ -10,6 +10,10 @@ It also includes some default implementations.
 
 ## Usage
 
+### Installation
+
+Add `"star/identity": "~1.0"` in your require node of your [composer](https://getcomposer.org/) file.
+
 ### Identities
 
 ```php
