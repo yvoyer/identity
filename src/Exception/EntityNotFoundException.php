@@ -22,7 +22,7 @@ class EntityNotFoundException extends \Exception {
 	 */
 	public static function objectWithIdentity(Identity $identity)
 	{
-		return new self(
+		return new static(
 			sprintf(
 				"Object of class '%s' with identity '%s' could not be found.",
 				$identity->entityClass(),
