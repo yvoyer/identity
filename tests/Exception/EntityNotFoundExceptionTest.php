@@ -26,4 +26,15 @@ final class EntityNotFoundExceptionTest extends \PHPUnit_Framework_TestCase {
 			array(new CompositeIdentity(array(new IntegerId(4)))),
 		);
 	}
+
+	public function test_it_should_return_an_instance_of_the_child_type()
+	{
+		$this->assertInstanceOf(
+			'Star\Component\Identity\Exception\ExtendingException',
+			ExtendingException::objectWithIdentity(new IntegerId())
+		);
+	}
 }
+
+final class ExtendingException extends EntityNotFoundException
+{}
