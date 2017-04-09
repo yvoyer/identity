@@ -30,11 +30,25 @@ final class EntityNotFoundExceptionTest extends \PHPUnit_Framework_TestCase {
 	public function test_it_should_return_an_instance_of_the_child_type()
 	{
 		$this->assertInstanceOf(
-			'Star\Component\Identity\Exception\ExtendingException',
+			ExtendingException::CLASS_NAME,
 			ExtendingException::objectWithIdentity(new IntegerId())
+		);
+	}
+
+	public function test_it_should_create_an_exception_for_object_with_attribute()
+	{
+		$exception = EntityNotFoundException::objectWithAttribute('stdclass', 'attr', 'val');
+		$this->assertInstanceOf(EntityNotFoundException::CLASS_NAME, $exception);
+		$this->assertSame("Object of class 'stdclass' with attr 'val' could not be found.", $exception->getMessage());
+
+		$this->assertInstanceOf(
+			ExtendingException::CLASS_NAME,
+			ExtendingException::objectWithAttribute('stdclass', 'attr', 'val')
 		);
 	}
 }
 
 final class ExtendingException extends EntityNotFoundException
-{}
+{
+	const CLASS_NAME = __CLASS__;
+}
