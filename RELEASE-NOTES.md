@@ -1,5 +1,9 @@
 # Release notes
 
+## 1.2.0
+
+ * [#5](https://github.com/yvoyer/identity/pull/5) - Add exception construct for object with attribute.
+
 ## 1.1.0
 
  * [#4](https://github.com/yvoyer/identity/pull/4) - Ability to override `EntityNotFoundException` 
