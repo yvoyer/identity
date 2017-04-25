@@ -2,7 +2,7 @@
 /*ide*
 /phpunit.xml
 /*.dia
-/bin/phpunit
-/bin/behat
+/bin/*
 /composer.lock
 /composer.phar
+/humbuglog.*

@@ -15,6 +15,7 @@ final class EntityNotFoundExceptionTest extends \PHPUnit_Framework_TestCase {
      */
     public function test_it_should_return_a_valid_message(Identity $identity) {
         $ex = EntityNotFoundException::objectWithIdentity($identity);
+        $this->assertInstanceOf(EntityNotFoundException::CLASS_NAME, $ex);
         $this->assertSame("Object of class 'object' with identity '4' could not be found.", $ex->getMessage());
     }
 
