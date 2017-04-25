@@ -5,3 +5,4 @@
 /bin/phpunit
 /bin/behat
 /composer.lock
+/composer.phar

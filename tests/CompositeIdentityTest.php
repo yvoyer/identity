@@ -7,16 +7,11 @@
 
 namespace Star\Component\Identity;
 
-/**
- * @author  Yannick Voyer (http://github.com/yvoyer)
- *
- * @package Star\Component\Identity
- */
 final class CompositeIdentityTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @expectedException        \Star\Component\Identity\Exception\InvalidArgumentException
-     * @expectedExceptionMessage The id should have at least on identity.
+     * @expectedExceptionMessage Identity value should have at least one identity.
      */
     public function test_should_have_at_least_on_identity()
     {
@@ -46,30 +41,30 @@ final class CompositeIdentityTest extends \PHPUnit_Framework_TestCase
 
 final class StubIdentity implements Identity
 {
-	private $id;
+    private $id;
 
-	/**
-	 * @param $id
-	 */
-	public function __construct($id) {
-		$this->id = $id;
-	}
+    /**
+     * @param $id
+     */
+    public function __construct($id) {
+        $this->id = $id;
+    }
 
-	/**
-	 * Returns the entity class for the identity.
-	 *
-	 * @return string
-	 */
-	public function entityClass() {
-		throw new \RuntimeException('Method ' . __METHOD__ . ' not implemented yet.');
-	}
+    /**
+     * Returns the entity class for the identity.
+     *
+     * @return string
+     */
+    public function entityClass() {
+        throw new \RuntimeException('Method ' . __METHOD__ . ' not implemented yet.');
+    }
 
-	/**
-	 * Returns the string value of the identity.
-	 *
-	 * @return string
-	 */
-	public function toString() {
-		return $this->id;
-	}
+    /**
+     * Returns the string value of the identity.
+     *
+     * @return string
+     */
+    public function toString() {
+        return $this->id;
+    }
 }

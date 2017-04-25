@@ -7,11 +7,6 @@
 
 namespace Star\Component\Identity;
 
-/**
- * @author  Yannick Voyer (http://github.com/yvoyer)
- *
- * @package Star\Component\Identity
- */
 interface Identity
 {
     /**

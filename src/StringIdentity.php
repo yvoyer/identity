@@ -7,13 +7,8 @@
 
 namespace Star\Component\Identity;
 
-use Star\Component\Identity\Exception\InvalidArgumentException;
+use Star\Component\Identity\Exception\IdentityAssertion;
 
-/**
- * @author  Yannick Voyer (http://github.com/yvoyer)
- *
- * @package Star\Component\Identity
- */
 class StringIdentity implements Identity
 {
     /**
@@ -22,16 +17,14 @@ class StringIdentity implements Identity
     private $id;
 
     /**
-     * @param mixed $id
+     * @param string $id
      *
      * @throws Exception\InvalidArgumentException
      */
-    public function __construct($id = null)
+    public function __construct($id)
     {
-        if (false === is_string($id) && null !== $id) {
-            throw new InvalidArgumentException('The id should be string or null value.');
-        }
-
+        IdentityAssertion::string($id, 'Identity value "%s" expected to be string, type %s given.');
+        IdentityAssertion::notEmpty($id, 'Identity value "%s" is empty, but non empty value was expected.');
         $this->id = $id;
     }
 

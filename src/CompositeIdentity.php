@@ -7,13 +7,8 @@
 
 namespace Star\Component\Identity;
 
-use Star\Component\Identity\Exception\InvalidArgumentException;
+use Star\Component\Identity\Exception\IdentityAssertion;
 
-/**
- * @author  Yannick Voyer (http://github.com/yvoyer)
- *
- * @package Star\Component\Identity
- */
 class CompositeIdentity implements Identity
 {
     /**
@@ -28,10 +23,7 @@ class CompositeIdentity implements Identity
      */
     public function __construct(array $ids = array())
     {
-        if (empty($ids)) {
-            throw new InvalidArgumentException('The id should have at least on identity.');
-        }
-
+        IdentityAssertion::greaterThan(count($ids), 0, 'Identity value should have at least one identity.');
         foreach ($ids as $id) {
             $this->addIdentity($id);
         }
@@ -50,7 +42,7 @@ class CompositeIdentity implements Identity
      */
     public function entityClass()
     {
-	    return 'object';
+        return 'object';
     }
 
     /**
@@ -58,6 +50,6 @@ class CompositeIdentity implements Identity
      */
     public function toString()
     {
-	    return strval(implode(' ', $this->ids));
+        return strval(implode(' ', $this->ids));
     }
 }
