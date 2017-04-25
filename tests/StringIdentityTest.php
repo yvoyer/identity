@@ -7,11 +7,6 @@
 
 namespace Star\Component\Identity;
 
-/**
- * @author  Yannick Voyer (http://github.com/yvoyer)
- *
- * @package Star\Component\Identity
- */
 final class StringIdentityTest extends \PHPUnit_Framework_TestCase
 {
     const CLASS_NAME = __CLASS__;
@@ -22,25 +17,13 @@ final class StringIdentityTest extends \PHPUnit_Framework_TestCase
         $this->assertSame('id', $identity->toString());
     }
 
-    public function test_should_support_null()
-    {
-        $identity = new StringIdentity(null);
-        $this->assertSame('', $identity->toString());
-    }
-
-    public function test_should_have_default_value_as_null()
-    {
-        $identity = new StringIdentity();
-        $this->assertSame('', $identity->toString());
-    }
-
     /**
      * @param $id
      *
      * @dataProvider provideInvalidValues
      *
      * @expectedException        \Star\Component\Identity\Exception\InvalidArgumentException
-     * @expectedExceptionMessage The id should be string or null value.
+     * @expectedExceptionMessage expected to be string, type
      */
     public function test_should_throw_exception_with_invalid_value($id)
     {
@@ -55,12 +38,21 @@ final class StringIdentityTest extends \PHPUnit_Framework_TestCase
             array(array()),
             array((object) array()),
             array(123.321),
+            array(null),
         );
     }
 
     public function test_it_should_be_converted_to_string()
     {
         $this->assertSame('id', (new StringIdentity('id'))->toString());
-        $this->assertSame('', (new StringIdentity(null))->toString());
+    }
+
+    /**
+     * @expectedException        \Star\Component\Identity\Exception\InvalidArgumentException
+     * @expectedExceptionMessage Identity value "" is empty, but non empty value was expected.
+     */
+    public function test_it_should_not_allow_empty_string()
+    {
+        new StringIdentity('');
     }
 }

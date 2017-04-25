@@ -7,11 +7,6 @@
 
 namespace Star\Component\Identity\Exception;
 
-/**
- * @author  Yannick Voyer (http://github.com/yvoyer)
- *
- * @package Star\Component\Identity\Exception
- */
-final class InvalidArgumentException extends \Exception
+final class InvalidArgumentException extends \Assert\InvalidArgumentException
 {
 }

@@ -7,11 +7,6 @@
 
 namespace Star\Component\Identity;
 
-/**
- * @author  Yannick Voyer (http://github.com/yvoyer)
- *
- * @package Star\Component\Identity
- */
 final class IntegerIdTest extends \PHPUnit_Framework_TestCase
 {
     public function test_should_return_integer_value()
@@ -20,25 +15,13 @@ final class IntegerIdTest extends \PHPUnit_Framework_TestCase
         $this->assertSame('12', $id->toString());
     }
 
-    public function test_should_support_null_as_default_value()
-    {
-        $id = new IntegerId();
-        $this->assertSame('', $id->toString());
-    }
-
-    public function test_should_support_null()
-    {
-        $id = new IntegerId(null);
-        $this->assertSame('', $id->toString());
-    }
-
     /**
      * @param $id
      *
      * @dataProvider provideInvalidValues
      *
      * @expectedException        \Star\Component\Identity\Exception\InvalidArgumentException
-     * @expectedExceptionMessage The id should be int or null value.
+     * @expectedExceptionMessage is not an integer value.
      */
     public function test_should_throw_exception_with_invalid_value($id)
     {
@@ -54,12 +37,12 @@ final class IntegerIdTest extends \PHPUnit_Framework_TestCase
             array((object) array()),
             array('string'),
             array(123.321),
+            array(null),
         );
     }
 
     public function test_it_should_be_converted_to_string()
     {
         $this->assertSame('123', (new IntegerId(123))->toString());
-        $this->assertSame('', (new IntegerId(null))->toString());
     }
 }

@@ -7,13 +7,8 @@
 
 namespace Star\Component\Identity;
 
-use Star\Component\Identity\Exception\InvalidArgumentException;
+use Star\Component\Identity\Exception\IdentityAssertion;
 
-/**
- * @author  Yannick Voyer (http://github.com/yvoyer)
- *
- * @package Star\Component\Identity
- */
 class IntegerId implements Identity
 {
     /**
@@ -26,12 +21,9 @@ class IntegerId implements Identity
      *
      * @throws Exception\InvalidArgumentException
      */
-    public function __construct($id = null)
+    public function __construct($id)
     {
-        if (false === is_integer($id) && null !== $id) {
-            throw new InvalidArgumentException('The id should be int or null value.');
-        }
-
+        IdentityAssertion::integerish($id, 'Identity value "%s" is not an integer value.');
         $this->id = $id;
     }
 

@@ -7,11 +7,6 @@
 
 namespace Star\Component\Identity\Helper;
 
-/**
- * @author  Yannick Voyer (http://github.com/yvoyer)
- *
- * @package Star\Component\Identity\Helper
- */
 trait DomainIdentityAssert
 {
     protected function assertInstanceOfDomainIdentity($object)
