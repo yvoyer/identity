@@ -1,4 +1,5 @@
-<?php
+<?php declare(strict_types=1);
+
 /**
  * This file is part of the domain-identity project.
  *
@@ -14,12 +15,12 @@ interface Identity
      *
      * @return string
      */
-    public function entityClass();
+    public function entityClass(): string;
 
     /**
      * Returns the string value of the identity.
      *
      * @return string
      */
-    public function toString();
+    public function toString(): string;
 }

@@ -1,5 +1,9 @@
 # Release notes
 
+## 2.0.0
+
+See [Release notes](RELEASE-NOTES.md)
+
 ## 1.2.0
 
  * [#5](https://github.com/yvoyer/identity/pull/5) - Add exception construct for object with attribute.

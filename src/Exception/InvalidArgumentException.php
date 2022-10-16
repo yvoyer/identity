@@ -1,4 +1,5 @@
-<?php
+<?php declare(strict_types=1);
+
 /**
  * This file is part of the domain-identity project.
  *
@@ -7,6 +8,6 @@
 
 namespace Star\Component\Identity\Exception;
 
-final class InvalidArgumentException extends \Assert\InvalidArgumentException
+final class InvalidArgumentException extends \InvalidArgumentException
 {
 }
