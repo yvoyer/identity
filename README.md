@@ -12,14 +12,14 @@ It also includes some default implementations.
 
 ### Installation
 
-Add `"star/identity": "~1.0"` in your require node of your [composer](https://getcomposer.org/) file.
+Run `composer require star/identity` using [composer](https://getcomposer.org/).
 
 ### Identities
 
 ```php
 $integer = new IntegerId(4);
 $string = new StringId('something');
-$composite = new CompositeIdentity(array($integer, $string));
+$composite = new CompositeIdentity($integer, $string);
 
 $integer->toString(); // return '4'
 $string->toString(); // return 'something'

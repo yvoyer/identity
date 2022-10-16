@@ -1,4 +1,5 @@
-<?php
+<?php declare(strict_types=1);
+
 /**
  * This file is part of the domain-identity project.
  *
@@ -8,16 +9,21 @@
 namespace Star\Component\Identity\Exception;
 
 use Star\Component\Identity\Identity;
+use Throwable;
 
-class EntityNotFoundException extends \Exception {
-    const CLASS_NAME = __CLASS__;
+class EntityNotFoundException extends \Exception
+{
+    final public function __construct(string $message = "", int $code = 0, Throwable $previous = null)
+    {
+        parent::__construct($message, $code, $previous);
+    }
 
     /**
      * @param Identity $identity
      *
      * @return static
      */
-    public static function objectWithIdentity(Identity $identity)
+    public static function objectWithIdentity(Identity $identity): self
     {
         return new static(
             sprintf(
@@ -35,7 +41,7 @@ class EntityNotFoundException extends \Exception {
      *
      * @return static
      */
-    public static function objectWithAttribute($class, $attribute, $value)
+    public static function objectWithAttribute(string $class, string $attribute, string $value): self
     {
         return new static(
             sprintf(

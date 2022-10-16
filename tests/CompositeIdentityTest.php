@@ -1,4 +1,5 @@
-<?php
+<?php declare(strict_types=1);
+
 /**
  * This file is part of the domain-identity project.
  *
@@ -7,64 +8,31 @@
 
 namespace Star\Component\Identity;
 
-final class CompositeIdentityTest extends \PHPUnit_Framework_TestCase
-{
-    /**
-     * @expectedException        \Star\Component\Identity\Exception\InvalidArgumentException
-     * @expectedExceptionMessage Identity value should have at least one identity.
-     */
-    public function test_should_have_at_least_on_identity()
-    {
-        new CompositeIdentity(array());
-    }
+use PHPUnit\Framework\TestCase;
 
-    public function test_should_be_composed_of_multiple_identities()
+final class CompositeIdentityTest extends TestCase
+{
+    public function test_should_be_composed_of_multiple_identities(): void
     {
         $id1 = new StubIdentity(1);
         $id2 = new StubIdentity(2);
         $id3 = new StubIdentity(3);
 
-        $identity = new CompositeIdentity(array($id1, $id2, $id3));
+        $identity = new CompositeIdentity($id1, $id2, $id3);
         $this->assertSame('1 2 3', $identity->toString());
     }
 
-    public function test_it_should_be_converted_to_string()
+    public function test_it_should_be_converted_to_string(): void
     {
         $id1 = new StubIdentity(1);
         $id2 = new StubIdentity(2);
         $id3 = new StubIdentity(3);
 
-        $identity = new CompositeIdentity(array($id1, $id2, $id3));
+        $identity = new CompositeIdentity($id1, $id2, $id3);
         $this->assertSame('1 2 3', $identity->toString());
     }
 }
 
-final class StubIdentity implements Identity
+final class StubIdentity extends IntegerIdentity
 {
-    private $id;
-
-    /**
-     * @param $id
-     */
-    public function __construct($id) {
-        $this->id = $id;
-    }
-
-    /**
-     * Returns the entity class for the identity.
-     *
-     * @return string
-     */
-    public function entityClass() {
-        throw new \RuntimeException('Method ' . __METHOD__ . ' not implemented yet.');
-    }
-
-    /**
-     * Returns the string value of the identity.
-     *
-     * @return string
-     */
-    public function toString() {
-        return $this->id;
-    }
 }

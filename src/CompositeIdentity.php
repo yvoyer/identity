@@ -1,4 +1,5 @@
-<?php
+<?php declare(strict_types=1);
+
 /**
  * This file is part of the domain-identity project.
  *
@@ -7,49 +8,28 @@
 
 namespace Star\Component\Identity;
 
-use Star\Component\Identity\Exception\IdentityAssertion;
+use function array_map;
+use function array_merge;
 
 class CompositeIdentity implements Identity
 {
     /**
      * @var Identity[]
      */
-    private $ids = array();
+    private array $ids;
 
-    /**
-     * @param Identity[] $ids
-     *
-     * @throws Exception\InvalidArgumentException
-     */
-    public function __construct(array $ids = array())
+    public function __construct(Identity $first, Identity ...$others)
     {
-        IdentityAssertion::greaterThan(count($ids), 0, 'Identity value should have at least one identity.');
-        foreach ($ids as $id) {
-            $this->addIdentity($id);
-        }
+        $this->ids = array_merge([$first], $others);
     }
 
-    /**
-     * @param Identity $identity
-     */
-    protected function addIdentity(Identity $identity)
-    {
-        $this->ids[] = $identity->toString();
-    }
-
-    /**
-     * @return string
-     */
-    public function entityClass()
+    public function entityClass(): string
     {
         return 'object';
     }
 
-    /**
-     * @return string
-     */
-    public function toString()
+    public function toString(): string
     {
-        return strval(implode(' ', $this->ids));
+        return implode(' ', array_map(new IdentityToString(), $this->ids));
     }
 }

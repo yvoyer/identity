@@ -1,4 +1,5 @@
-<?php
+<?php declare(strict_types=1);
+
 /**
  * This file is part of the domain-identity project.
  *
@@ -7,39 +8,30 @@
 
 namespace Star\Component\Identity;
 
-use Star\Component\Identity\Exception\IdentityAssertion;
+use Star\Component\Identity\Exception\InvalidArgumentException;
+use function mb_strlen;
+use function sprintf;
 
 class StringIdentity implements Identity
 {
-    /**
-     * @var string
-     */
-    private $id;
+    private string $id;
 
-    /**
-     * @param string $id
-     *
-     * @throws Exception\InvalidArgumentException
-     */
-    public function __construct($id)
+    public function __construct(string $id)
     {
-        IdentityAssertion::string($id, 'Identity value "%s" expected to be string, type %s given.');
-        IdentityAssertion::notEmpty($id, 'Identity value "%s" is empty, but non empty value was expected.');
+        if (mb_strlen($id) === 0) {
+            throw new InvalidArgumentException(
+                sprintf('Identity value "%s" is empty, but non empty value was expected.', $id)
+            );
+        }
         $this->id = $id;
     }
 
-    /**
-     * @return string
-     */
-    public function entityClass()
+    public function entityClass(): string
     {
         return 'object';
     }
 
-    /**
-     * @return string
-     */
-    public function toString()
+    public function toString(): string
     {
         return strval($this->id);
     }
