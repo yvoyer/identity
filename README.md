@@ -1,6 +1,6 @@
 # Identity package
 
-Master: [![Build Status](https://travis-ci.org/yvoyer/identity.svg?branch=master)](https://travis-ci.org/yvoyer/identity)
+![Build Status](https://github.com/yvoyer/identity/actions/workflows/php.yml/badge.svg)
 
 ## Description
 
