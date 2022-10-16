@@ -2,7 +2,7 @@
 
 ## 2.0.0
 
-See [Release notes](RELEASE-NOTES.md)
+See [Upgrade notes](UPGRADE.md#upgrading-to-200)
 
 ## 1.2.0
 
